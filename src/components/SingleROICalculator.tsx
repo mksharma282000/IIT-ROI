@@ -50,6 +50,7 @@ const SingleROICalculator = () => {
               type="number"
               value={data.users}
               onChange={(e) => handleChange("users", e.target.value)}
+              placeholder="0"
             />
           </div>
 
@@ -60,6 +61,7 @@ const SingleROICalculator = () => {
               type="number"
               value={data.usesPerDay}
               onChange={(e) => handleChange("usesPerDay", e.target.value)}
+              placeholder="0"
             />
           </div>
 
@@ -70,6 +72,7 @@ const SingleROICalculator = () => {
               type="number"
               value={data.daysPerYear}
               onChange={(e) => handleChange("daysPerYear", e.target.value)}
+              placeholder="0"
             />
           </div>
 
@@ -80,6 +83,7 @@ const SingleROICalculator = () => {
               type="number"
               value={data.workHoursPerDay}
               onChange={(e) => handleChange("workHoursPerDay", e.target.value)}
+              placeholder="0"
             />
           </div>
 
@@ -90,6 +94,7 @@ const SingleROICalculator = () => {
               type="number"
               value={data.annualSalary}
               onChange={(e) => handleChange("annualSalary", e.target.value)}
+              placeholder="0"
             />
           </div>
 
@@ -101,6 +106,7 @@ const SingleROICalculator = () => {
                 type="number"
                 value={data.increaseInEfficiency}
                 onChange={(e) => handleChange("increaseInEfficiency", e.target.value)}
+                placeholder="0"
               />
               <span className="flex items-center text-sm text-gray-600">secs</span>
             </div>
@@ -113,6 +119,7 @@ const SingleROICalculator = () => {
               type="number"
               value={data.improvementCost}
               onChange={(e) => handleChange("improvementCost", e.target.value)}
+              placeholder="0"
             />
           </div>
 
@@ -124,6 +131,7 @@ const SingleROICalculator = () => {
                 type="number"
                 value={data.expectedProjectLife}
                 onChange={(e) => handleChange("expectedProjectLife", e.target.value)}
+                placeholder="0"
               />
               <span className="flex items-center text-sm text-gray-600">Year(s)</span>
             </div>
