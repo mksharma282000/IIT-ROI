@@ -119,11 +119,11 @@ const ScenarioForm = ({ data, results, onChange, scenarioNumber }: ScenarioFormP
         </div>
         <div className="flex justify-between">
           <span className="text-sm font-medium">Annual ROI</span>
-          <span className="font-semibold">{(results.annualROI / 100).toFixed(2)}:1</span>
+          <span className="font-semibold">{(results.annualROI / 100).toFixed(0)}:1</span>
         </div>
         <div className="flex justify-between">
           <span className="text-sm font-medium">Total ROI</span>
-          <span className="font-semibold">{(results.totalROI / 100).toFixed(2)}:1</span>
+          <span className="font-semibold">{(results.totalROI / 100).toFixed(0)}:1</span>
         </div>
       </div>
     </div>
