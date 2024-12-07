@@ -148,11 +148,11 @@ const SingleROICalculator = () => {
           <div className="space-y-3 bg-gray-50 p-4 rounded-lg mt-6">
             <div className="flex justify-between">
               <span className="font-medium">Total Gain from Improvement ($)</span>
-              <span>{results.totalGain.toFixed(2) || 0}</span>
+              <span>{results.totalGain ? results.totalGain.toFixed(2) : 0}</span>
             </div>
             <div className="flex justify-between">
               <span className="font-medium">Annual Gain from Improvement ($)</span>
-              <span>{results.annualGain.toFixed(2) || 0}</span>
+              <span>{results.annualGain ? results.annualGain.toFixed(2) : 0}</span>
             </div>
             <div className="flex justify-between">
               <span className="font-medium">Annual ROI</span>
