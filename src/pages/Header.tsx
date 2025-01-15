@@ -1,6 +1,9 @@
 import { useState } from "react";
 import { Menu, ChevronDown } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { useNavigate } from "react-router-dom";
+
+import logo from "../assets/logo.jpg";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -9,10 +12,11 @@ import {
 } from "@/components/ui/dropdown-menu";
 
 const Header = () => {
+  const navigate = useNavigate();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const navLinks = [
-    { name: "Home", href: "/" },
+    // { name: "Home", href: "/" },
     { name: "About", href: "/about" },
   ];
 
@@ -29,20 +33,20 @@ const Header = () => {
     <header className="sticky top-0 z-50 bg-black shadow-lg text-white overflow-hidden">
       <div className="container mx-auto flex h-16 items-center justify-between px-6">
         {/* Logo */}
-        <a href="/" className="text-xl font-bold tracking-wide text-white">
-          ROI Cal
+        <a href="/" className="text-xl font-bold  text-white">
+          <img className="md:w-[70px] md:h-[50px]" src={logo} alt="home" />
         </a>
 
         {/* Desktop Navigation */}
         <nav className="hidden md:flex items-center space-x-6 ">
           {navLinks.map((link) => (
-            <a
+            <button
               key={link.name}
-              href={link.href}
+              onClick={() => navigate(link.href)}
               className="text-sm uppercase hover:text-orange-500 transition duration-300"
             >
               {link.name}
-            </a>
+            </button>
           ))}
           <DropdownMenu>
             <DropdownMenuTrigger asChild>

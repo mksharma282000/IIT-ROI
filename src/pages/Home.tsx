@@ -3,8 +3,9 @@ import { useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import Header from "./Header";
 import Footer from "./Footer";
-import homeimg from "../assets/homeimg.jpg";
+// import homeimg from "../assets/homeimg.jpg";
 import { Fullscreen } from "lucide-react";
+import { BackgroundGradientAnimation } from "../components/ui/background-gradient-animation";
 
 const Home = () => {
   const navigate = useNavigate();
@@ -44,12 +45,16 @@ const Home = () => {
             ))}
           </div>
         </div>
-        <div className="flex items-end p-4">
-          <img
-            className="md:w-[600px] md:h-[600px] object-cover"
-            src={homeimg}
-            alt="home"
-          />
+        <div className="relative flex items-end p-4 w-full h-full md:w-[600px] md:h-[600px] rounded-lg shadow-lg overflow-hidden">
+          {/* Background Animation */}
+          <BackgroundGradientAnimation>
+            {/* Overlay Text */}
+            <div className="absolute z-50 inset-0 flex items-center justify-center text-center">
+              <p className="text-3xl md:text-4xl lg:text-7xl font-extrabold text-transparent bg-clip-text bg-gradient-to-b from-white/80 to-white/20 drop-shadow-2xl">
+                ROI CAL
+              </p>
+            </div>
+          </BackgroundGradientAnimation>
         </div>
       </div>
       <Footer />

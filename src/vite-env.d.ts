@@ -1,1 +1,1 @@
-/// <reference types="vite/client" />
+npm/// <reference types="vite/client" />
