@@ -20,7 +20,7 @@ const Home = () => {
   return (
     <>
       <Header />
-      <div className="md:flex w-full bg-gray-50 font-barlow justify-center md:gap-10 py-20">
+      <div className="md:flex w-full bg-gray-50 font-barlow justify-center md:gap-10 md:py-20 py-10">
         <div className="md:w-1/2 px-6 md:px-12 flex flex-col justify-center bg-gray-50">
           <h1 className="md:text-6xl text-4xl font-bold text-gray-800">
             <span>Maximize </span>
@@ -30,7 +30,7 @@ const Home = () => {
           <h1 className="md:text-xl text-lg font-medium text-gray-800 md:my-6 my-2 ">
             Calculate, analyze, and act smarter with our precision-driven tool.
           </h1>
-          <div className="grid grid-cols-2 md:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-3 md:gap-6 gap-2">
             {[
               {
                 text: "Increased Productivity",
@@ -62,7 +62,7 @@ const Home = () => {
               <button
                 key={index}
                 onClick={() => navigate(option.route)}
-                className="w-52 flex justify-center gap-3 items-center px-6 py-4 rounded-lg shadow-md text-white bg-indigo-600 hover:bg-indigo-500 transition duration-300"
+                className="md:w-52  flex justify-center gap-3 items-center px-6 py-4 rounded-lg shadow-md text-white bg-indigo-600 hover:bg-indigo-500 transition duration-300"
               >
                 {option.text}
                 {option.logo}
@@ -74,7 +74,7 @@ const Home = () => {
           {/* Background Animation */}
           <BackgroundGradientAnimation>
             {/* Overlay Text */}
-            <div className="absolute z-50 inset-0 flex items-center justify-center text-center">
+            <div className="absolute z-50 inset-0 flex items-center justify-center text-center align-middle">
               <p className="text-3xl md:text-4xl lg:text-7xl font-extrabold text-transparent bg-clip-text bg-gradient-to-b from-white/80 to-white/20 drop-shadow-2xl">
                 ROI CAL
               </p>

@@ -103,7 +103,7 @@ const Header = () => {
                 <ChevronDown className="h-4 w-4 ml-1" />
               </button>
             </DropdownMenuTrigger>
-            <DropdownMenuContent className="mt-2 bg-white rounded-lg shadow-2xl">
+            <DropdownMenuContent className="mt-2 bg-gray-50 rounded-lg shadow-2xl">
               {menuItems.map((item) => (
                 <DropdownMenuItem key={item.name}>
                   <button
