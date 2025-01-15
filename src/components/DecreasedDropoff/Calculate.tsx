@@ -127,6 +127,15 @@ const SingleROICalculator = () => {
   return (
     <>
       <div className="container mx-auto p-6 font-barlow">
+        <div className="flex flex-col space-y-2 justify-center items-center pt-6 pb-16">
+          <h3 className="text-4xl font-bold text-gray-800">
+            Decreased Dropoff
+          </h3>
+          <p className="text-lg font-medium text-gray-600">
+            Reduce abandonment rates and enhance user retention with intuitive
+            solutions.
+          </p>
+        </div>
         <div className="flex md:flex-row flex-col gap-8 justify-center">
           {/* Left Section */}
           <div className="w-full lg:w-7/12">

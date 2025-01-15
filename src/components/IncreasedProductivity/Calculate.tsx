@@ -11,7 +11,6 @@ import { jsPDF } from "jspdf";
 import { GrDocumentPdf } from "react-icons/gr";
 import generatePDF, { Resolution, Margin } from "react-to-pdf";
 
-
 const SingleROICalculator = () => {
   const [data, setData] = useState<ScenarioData>({
     users: "",
@@ -82,7 +81,6 @@ const SingleROICalculator = () => {
       { label: "Improvement Cost", value: data.increaseInEfficiency },
       { label: "Expected Project Life", value: data.improvementCost },
       { label: "Expected Project Life", value: data.expectedProjectLife },
-
     ];
 
     let yOffset = 50; // Starting y-coordinate for input data
@@ -131,7 +129,7 @@ const SingleROICalculator = () => {
     doc.save("ROI_Report.pdf");
   };
 
-  const [showDownloadButton, setShowDownloadButton] = useState(false)
+  const [showDownloadButton, setShowDownloadButton] = useState(false);
 
   const [calculatedResults, setCalculatedResults] = useState({
     annualROI: 0,
@@ -167,12 +165,19 @@ const SingleROICalculator = () => {
       annualGain: 0,
     });
     setShowDownloadButton(false);
-
   };
 
   return (
     <>
       <div className="container mx-auto p-6 font-barlow">
+        <div className="flex flex-col space-y-2 justify-center items-center pt-6 pb-16">
+          <h3 className="text-4xl font-bold text-gray-800">
+          Increased Productivity
+          </h3>
+          <p className="text-lg font-medium text-gray-600">
+          Boost efficiency and achieve more in less time.
+          </p>
+        </div>
         <div className="flex md:flex-row flex-col gap-8 justify-center">
           {/* Left Section */}
           <div className="w-full lg:w-7/12">
@@ -319,7 +324,6 @@ const SingleROICalculator = () => {
                     },
                   ].map(({ label, value }) => (
                     <div key={label} className="flex flex-row  w-full">
-
                       <div className="text-left text-sm font-medium text-gray-500 w-1/2">
                         {label}
                       </div>
@@ -348,8 +352,8 @@ const SingleROICalculator = () => {
                 </Button>
               </div>
 
-              {showDownloadButton &&
-                (<div className="DownloadPDF md:hidden flex gap-3 justify-center mt-8">
+              {showDownloadButton && (
+                <div className="DownloadPDF md:hidden flex gap-3 justify-center mt-8">
                   <button
                     className="rounded-[2px] underline text-xs text- font-barlow "
                     onClick={downloadPDF}
@@ -363,8 +367,7 @@ const SingleROICalculator = () => {
                     Click here to download Report
                   </button>
                 </div>
-                )
-              }
+              )}
             </div>
           </div>
           {/* Right Section */}
@@ -409,8 +412,8 @@ const SingleROICalculator = () => {
                 ))}
               </div>
 
-              {showDownloadButton &&
-                (<div className="DownloadPDF flex gap-3 justify-center">
+              {showDownloadButton && (
+                <div className="DownloadPDF flex gap-3 justify-center">
                   <button
                     className="rounded-[2px] underline text-xs text- font-barlow "
                     onClick={downloadPDF}
@@ -424,10 +427,7 @@ const SingleROICalculator = () => {
                     Click here to download Report
                   </button>
                 </div>
-                )
-
-              }
-
+              )}
             </div>
           </div>
         </div>

@@ -40,7 +40,10 @@ const SingleROICalculator = () => {
     const inputLabels = [
       { label: "Pre-Design Drop-off Rate", value: data.annualSiteProfit },
       { label: "Post-Design Drop-off Rate", value: data.currentConversionRate },
-      { label: "Current Monthly Page Traffic", value: data.improvedConversionRate },
+      {
+        label: "Current Monthly Page Traffic",
+        value: data.improvedConversionRate,
+      },
       { label: "Average Order Size", value: data.improvementCost },
       { label: "Profit % Per Order", value: data.expectedProjectLife },
     ];
@@ -90,7 +93,7 @@ const SingleROICalculator = () => {
     // Save the PDF
     doc.save("ROI_Report.pdf");
   };
-  const [showDownloadButton, setShowDownloadButton] = useState(false)
+  const [showDownloadButton, setShowDownloadButton] = useState(false);
 
   const handleChange = (field: keyof ScenarioData, value: string) => {
     setData((prev) => ({ ...prev, [field]: value }));
@@ -100,9 +103,7 @@ const SingleROICalculator = () => {
     const results = calculateROIResults(data);
     setCalculatedResults(results);
     setShowDownloadButton(true);
-
   };
-
 
   const handleClear = () => {
     setData({
@@ -119,13 +120,19 @@ const SingleROICalculator = () => {
       annualGain: 0,
     });
     setShowDownloadButton(false);
-
-
   };
 
   return (
     <>
       <div className="container mx-auto p-6 font-barlow">
+        <div className="flex flex-col space-y-2 justify-center items-center pt-6 pb-16">
+          <h3 className="text-4xl font-bold text-gray-800">
+            Increased Conversion
+          </h3>
+          <p className="text-lg font-medium text-gray-600">
+            Improve engagement and achieve higher success rates.
+          </p>
+        </div>
         <div className="flex md:flex-row flex-col gap-8 justify-center">
           {/* Left Section */}
           <div className="w-full lg:w-7/12">
@@ -261,7 +268,6 @@ const SingleROICalculator = () => {
                     },
                   ].map(({ label, value }) => (
                     <div key={label} className="flex flex-row  w-full">
-
                       <div className="text-left text-sm font-medium text-gray-500 w-1/2">
                         {label}
                       </div>
@@ -290,8 +296,8 @@ const SingleROICalculator = () => {
                 </Button>
               </div>
 
-              {showDownloadButton &&
-                (<div className="DownloadPDF md:hidden flex gap-3 justify-center mt-8">
+              {showDownloadButton && (
+                <div className="DownloadPDF md:hidden flex gap-3 justify-center mt-8">
                   <button
                     className="rounded-[2px] underline text-xs text- font-barlow "
                     onClick={downloadPDF}
@@ -305,9 +311,7 @@ const SingleROICalculator = () => {
                     Click here to download Report
                   </button>
                 </div>
-                )
-              }
-
+              )}
             </div>
           </div>
           {/* Right Section */}
@@ -352,8 +356,8 @@ const SingleROICalculator = () => {
                 ))}
               </div>
 
-              {showDownloadButton &&
-                (<div className="DownloadPDF flex gap-3 justify-center">
+              {showDownloadButton && (
+                <div className="DownloadPDF flex gap-3 justify-center">
                   <button
                     className="rounded-[2px] underline text-xs text- font-barlow "
                     onClick={downloadPDF}
@@ -367,10 +371,7 @@ const SingleROICalculator = () => {
                     Click here to download Report
                   </button>
                 </div>
-                )
-
-              }
-
+              )}
             </div>
           </div>
         </div>
