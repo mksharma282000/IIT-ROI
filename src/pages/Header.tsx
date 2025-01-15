@@ -2,7 +2,6 @@ import { useState } from "react";
 import { Menu, ChevronDown } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useNavigate } from "react-router-dom";
-
 import logo from "../assets/logo.jpg";
 import {
   DropdownMenu,
@@ -15,11 +14,7 @@ const Header = () => {
   const navigate = useNavigate();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
-  const navLinks = [
-    // { name: "Home", href: "/" },
-    { name: "About", href: "/about" },
-  ];
-
+  const navLinks = [{ name: "About", href: "/about" }];
   const menuItems = [
     { name: "Increased Productivity", href: "/increased-productivity" },
     { name: "Reduced Reliance", href: "/reduced-reliance" },
@@ -30,109 +25,93 @@ const Header = () => {
   ];
 
   return (
-    <header className="sticky top-0 z-50 bg-black shadow-lg text-white overflow-hidden">
+    <header className="sticky top-0 z-50 bg-black shadow-lg text-white">
       <div className="container mx-auto flex h-16 items-center justify-between px-6">
         {/* Logo */}
-        <a href="/" className="text-xl font-bold  text-white">
+        <a onClick={() => navigate("/")} className="cursor-pointer">
           <img className="md:w-[70px] md:h-[50px]" src={logo} alt="home" />
         </a>
 
         {/* Desktop Navigation */}
-        <nav className="hidden md:flex items-center space-x-6 ">
+        <nav className="hidden md:flex items-center space-x-6">
           {navLinks.map((link) => (
             <button
               key={link.name}
               onClick={() => navigate(link.href)}
-              className="text-sm uppercase hover:text-orange-500 transition duration-300"
+              className="text-sm uppercase hover:text-orange-500 transition"
             >
               {link.name}
             </button>
           ))}
           <DropdownMenu>
             <DropdownMenuTrigger asChild>
-              <button
-                className="hidden md:flex items-center border-none
-                text-sm uppercase hover:text-orange-500 transition duration-300"
-              >
+              <button className="flex items-center">
                 RESOURCES
-                <ChevronDown className="h-4 w-4" />
+                <ChevronDown className="h-4 w-4 ml-1" />
               </button>
             </DropdownMenuTrigger>
-            <DropdownMenuContent
-              align="center"
-              className="w-60 mt-2 shadow-2xl "
-            >
+            <DropdownMenuContent className="w-60 mt-2 shadow-2xl">
               {menuItems.map((item) => (
-                <DropdownMenuItem key={item.name} className="cursor-pointer">
-                  <a
-                    href={item.href}
-                    className="hover:text-indigo-800 transition-colors duration-200 font-barlow from-neutral-500 "
+                <DropdownMenuItem key={item.name}>
+                  <button
+                    onClick={() => navigate(item.href)}
+                    className="text-left w-full"
                   >
                     {item.name}
-                  </a>
+                  </button>
                 </DropdownMenuItem>
               ))}
             </DropdownMenuContent>
           </DropdownMenu>
         </nav>
 
-        <a
-          className="text-base font-semibold uppercase text-orange-500 hover:text-white transition duration-300"
-          href="/Contact"
+        <Button
+          variant="ghost"
+          className="md:hidden"
+          onClick={() => setIsMenuOpen((prev) => !prev)}
         >
-          Contact
-        </a>
-
-        {/* Dropdown and Mobile Menu */}
-        <div className="md:hidden items-center space-x-4">
-          {/* Dropdown Menu */}
-
-          {/* Mobile Menu Button */}
-          <Button
-            variant="ghost"
-            size="icon"
-            className="md:hidden"
-            onClick={() => setIsMenuOpen(!isMenuOpen)}
-          >
-            <Menu className="h-6 w-6" />
-          </Button>
-        </div>
+          <Menu className="h-6 w-6" />
+        </Button>
       </div>
 
       {/* Mobile Menu */}
       {isMenuOpen && (
-        <div className="md:hidden h-screen py-4 space-y-2">
+        <div className="md:hidden bg-black text-white">
           {navLinks.map((link) => (
-            <a
+            <button
               key={link.name}
-              href={link.href}
-              className="block px-4 py-2 hover:bg-indigo-600 transition-colors duration-200"
+              onClick={() => {
+                setIsMenuOpen(false);
+                navigate(link.href);
+              }}
+              className="block w-full text-left px-4 py-2 hover:bg-gray-800"
             >
               {link.name}
-            </a>
+            </button>
           ))}
-          <div className="px-4 py-2">
-            <DropdownMenu>
-              <DropdownMenuTrigger asChild>
-                <button
-                  className="w-full flex items-center justify-between border-none
-                text-sm uppercase hover:text-orange-500 transition duration-300"
-                >
-                  Resources
-                  <ChevronDown className="h-4 w-4" />
-                </button>
-              </DropdownMenuTrigger>
-              <DropdownMenuContent className="w-full">
-                {menuItems.map((item) => (
-                  <DropdownMenuItem key={item.name}>
-                    <a href={item.href} className="block w-full">
-                      {item.name}
-                    </a>
-                  </DropdownMenuItem>
-                ))}
-              </DropdownMenuContent>
-            </DropdownMenu>
-          </div>
+          <DropdownMenu>
+            <DropdownMenuTrigger asChild>
+              <button className="w-full flex justify-between px-4 py-2">
+                Resources
+                <ChevronDown />
+              </button>
+            </DropdownMenuTrigger>
+            <DropdownMenuContent>
+              {menuItems.map((item) => (
+                <DropdownMenuItem key={item.name}>
+                  <button
+                    onClick={() => {
+                      setIsMenuOpen(false);
+                      navigate(item.href);
+                    }}
+                    className="w-full text-left"
+                  >
+                    {item.name}
+                  </button>
+                </DropdownMenuItem>
+              ))}
+            </DropdownMenuContent>
+          </DropdownMenu>
         </div>
       )}
     </header>
